@@ -10,6 +10,10 @@ on:
     #  - "cross-gem/*"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   ci-data:
     runs-on: ubuntu-latest
