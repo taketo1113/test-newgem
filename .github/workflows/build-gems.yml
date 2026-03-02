@@ -27,7 +27,7 @@ jobs:
   source-gem:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -36,7 +36,7 @@ jobs:
       - name: Build gem
         run: bundle exec rake build
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v7
         with:
           name: source-gem
           path: pkg/*.gem
@@ -49,7 +49,7 @@ jobs:
       matrix:
         platform: ${{ fromJSON(needs.ci-data.outputs.result).supported-ruby-platforms }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -61,7 +61,7 @@ jobs:
           platform: ${{ matrix.platform }}
           ruby-versions: ${{ join(fromJSON(needs.ci-data.outputs.result).stable-ruby-versions, ',') }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v7
         with:
           name: cross-gem
           path: ${{ steps.cross-gem.outputs.gem-path }}
