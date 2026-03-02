@@ -3,9 +3,11 @@ name: Build gems
 
 on:
   push:
-    tags:
-      - "v*"
-      - "cross-gem/*"
+    branches:
+      - master
+    #tags:
+    #  - "v*"
+    #  - "cross-gem/*"
   workflow_dispatch:
 
 jobs:
